@@ -17,7 +17,6 @@ from sqlalchemy.orm import relationship
 import logging
 
 from marshmallow import fields, pre_load, Schema, validates_schema, validate
-from marshmallow.compat import iteritems
 
 from hubub_common.exceptions import InvalidParameterException
 from hubub_common.models.base import ModelSchema

@@ -31,7 +31,7 @@ class Contact(BaseModel):
 
 class ContactSchema(ModelSchema):
     id = fields.Integer(dump_only=True)
-    firstname = fields.String(required=True, missing=None)
+    firstname = fields.String(required=True)
     lastname = fields.String(required=False, missing=None)
     is_account_contact = fields.Boolean(required=False, default=False)
     email = fields.Nested('EmailSchema', many=True, required=False, missing=[])

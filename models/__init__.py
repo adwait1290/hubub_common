@@ -18,11 +18,9 @@ from .group import *
 from .service_provider import *
 from .user_group_service_provider import *
 from .user_tag import *
-from .user_facial_model import *
 from .user_device import *
 from .user import *
 from .device import *
-from .facial_model import *
 
 # account orm
 from .account_group import *
@@ -42,14 +40,15 @@ from .client_application import *
 from .authorization_token import *
 
 
-from hubub_common.devops.control import record_devops_data
+# from hubub_common.devops.control import record_devops_data
 
 
 def init_listeners(service):
 
     @service.listener('after_server_start')
     async def notify_server_started(service, loop):
-        record_devops_data(service)
+        # record_devops_data(service)
+        pass
 
     @service.listener('before_server_stop')
     async def notify_server_stopping(service, loop):

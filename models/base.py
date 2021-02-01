@@ -1,6 +1,5 @@
 
 from marshmallow import validates_schema, pre_load, fields
-from marshmallow.compat import iteritems
 from marshmallow_sqlalchemy import ModelSchema
 from hubub_common.models import *
 

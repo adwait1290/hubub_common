@@ -1,8 +1,8 @@
-"""added authentication_status_secret
+"""first
 
-Revision ID: 6c639fc35f80
-Revises: 4543554b3e94
-Create Date: 2017-12-14 11:09:21.222167
+Revision ID: 0a3f95addd20
+Revises: 
+Create Date: 2021-01-31 18:00:07.971464
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '6c639fc35f80'
-down_revision = '4543554b3e94'
+revision = '0a3f95addd20'
+down_revision = None
 branch_labels = None
 depends_on = None
 
