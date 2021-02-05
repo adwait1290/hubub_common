@@ -36,8 +36,6 @@ class User(BaseModel):
     account_id = sa.Column(sa.ForeignKey('account.id', ondelete='CASCADE'))
 
     is_primary = sa.Column(sa.Boolean, default=False)
-    has_facial_images = sa.Column(sa.Boolean, default=False)
-    facial_storage_prefix = sa.Column(sa.String, nullable=True)
 
     idtoken = sa.Column(sa.String)
     secret1 = sa.Column(sa.String)
@@ -60,7 +58,6 @@ class UserSchema(ModelSchema):
     username = fields.String(required=True)
 
     is_primary = fields.Boolean(required=False)
-    has_facial_images = fields.Boolean(required=False)
     user_registration_status = fields.String(required=False)
     idtoken = sa.Column(sa.String)
     secret1 = sa.Column(sa.String)
