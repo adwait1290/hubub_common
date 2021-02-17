@@ -1,11 +1,12 @@
-from enum import Enum
+from sqlalchemy import func
 
-from marshmallow import post_load, fields
+from marshmallow import fields
 from marshmallow_sqlalchemy import ModelSchema
+
+from marshmallow import post_load
 
 from .base import BaseModel
 from .db import Session
-from ._types import DeviceType, RegistrationStatus
 
 
 import sqlalchemy as sa
@@ -15,7 +16,7 @@ class DetailedHub(BaseModel):
     __tablename__ = 'SimpleHub'
     id = sa.Column(sa.Integer, primary_key=True, nullable=False)
     title = sa.Column(sa.String, nullable=True)
-    is_published = sa.Column(sa.Boolean, default=false)
+    is_published = sa.Column(sa.Boolean, default=False)
     hub_url = sa.Column(sa.String, nullable=True)
     image_url = sa.Column(sa.String, nullable=True)
     order = sa.Column(sa.Integer, default=0)
