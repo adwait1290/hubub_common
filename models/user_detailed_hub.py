@@ -1,7 +1,11 @@
+<<<<<<< HEAD
 from marshmallow import fields
 from marshmallow_sqlalchemy import ModelSchema
 
 from .base import BaseModel
+=======
+from .base import BaseModel, ModelSchema, fields
+>>>>>>> ed15ccc59283ddd4edaa2b4c490b126cb9c98aa6
 
 from .db import Session
 
