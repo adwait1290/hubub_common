@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 class DetailedHub(BaseModel):
-    __tablename__ = 'SimpleHub'
+    __tablename__ = 'DetailedHub'
     id = sa.Column(sa.Integer, primary_key=True, nullable=False)
     title = sa.Column(sa.String, nullable=True)
     is_published = sa.Column(sa.Boolean, default=False)
