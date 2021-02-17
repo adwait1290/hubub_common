@@ -1,10 +1,10 @@
 from enum import Enum
 
-from marshmallow import post_load
+from marshmallow import post_load, fields
+from marshmallow_sqlalchemy import ModelSchema
 
-from .base import BaseModel, ModelSchema, fields
+from .base import BaseModel
 from .db import Session
-from .user_device import *
 from ._types import DeviceType, RegistrationStatus
 
 

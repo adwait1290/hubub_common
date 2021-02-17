@@ -1,9 +1,9 @@
 
 import enum
 
-from hubub_common.exceptions import RecordNotFound
+from marshmallow_sqlalchemy import ModelSchema
 
-from .base import BaseModel, ModelSchema, fields
+from .base import BaseModel
 
 from .db import Session
 
@@ -12,14 +12,9 @@ from sqlalchemy import (
         Index, DDL, event, FetchedValue, func, Column, false,
         Integer, ForeignKey, String, DateTime, UniqueConstraint, Boolean
     )
-from sqlalchemy.orm import relationship
-
-import logging
 
 from marshmallow import fields, pre_load, Schema, validates_schema, validate
 
-from hubub_common.exceptions import InvalidParameterException
-from hubub_common.models.base import ModelSchema
 
 
 class AuthenticationResult(enum.Enum):

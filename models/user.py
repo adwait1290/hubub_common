@@ -1,5 +1,7 @@
+from marshmallow import fields
+from marshmallow_sqlalchemy import ModelSchema
 
-from .base import BaseModel, ModelSchema, fields
+from .base import BaseModel
 from enum import Enum
 from .db import Session
 
@@ -33,7 +35,6 @@ class User(BaseModel):
     contact = relationship("Contact")
     contact_id = sa.Column(sa.ForeignKey('contact.id', ondelete='CASCADE'))
 
-    account_id = sa.Column(sa.ForeignKey('account.id', ondelete='CASCADE'))
 
     is_primary = sa.Column(sa.Boolean, default=False)
 
@@ -48,9 +49,6 @@ class User(BaseModel):
     updated_at = sa.Column(sa.DateTime, server_default=func.now())
     deleted_at = sa.Column(sa.DateTime, nullable=True, server_default=None)
 
-    __table_args__ = (
-        UniqueConstraint('username', 'account_id', name='account_id_username_key'),
-    )
 
 
 class UserSchema(ModelSchema):
@@ -64,7 +62,6 @@ class UserSchema(ModelSchema):
     secret2 = sa.Column(sa.String)
 
     contact = fields.Nested('ContactSchema', many=False, required=False, missing=None)
-    account = fields.Nested('AccountSchema', many=False, required=False, missing=None)
     tags = fields.Nested('UserTagSchema', many=True, required=False, missing=[])
     created_at = fields.DateTime(required=False)
     updated_at = fields.DateTime(required=False)

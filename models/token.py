@@ -1,6 +1,10 @@
 
 import enum
-from .base import BaseModel, ModelSchema, fields
+
+from marshmallow import fields
+from marshmallow_sqlalchemy import ModelSchema
+
+from .base import BaseModel
 
 from .db import Session
 

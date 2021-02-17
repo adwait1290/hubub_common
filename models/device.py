@@ -1,8 +1,11 @@
 
 from enum import Enum
-from .base import BaseModel, ModelSchema, fields
+
+from marshmallow_sqlalchemy import ModelSchema
+from sqlalchemy.orm import relationship
+
+from .base import BaseModel
 from .db import Session
-from .user_device import *
 from ._types import DeviceType, RegistrationStatus
 
 import sqlalchemy as sa
@@ -11,14 +14,14 @@ from sqlalchemy import (
         Integer, ForeignKey, String, DateTime, UniqueConstraint, Boolean
     )
 from sqlalchemy_utils import ChoiceType
-from marshmallow import post_load, pre_load, post_dump, validate
+from marshmallow import post_load, pre_load, post_dump, validate, fields
 
 
 class Device(BaseModel):
     __tablename__ = 'device'
     id = sa.Column(sa.Integer, primary_key=True, nullable=False)
     label = sa.Column(sa.String)
-    type = sa.Column(ChoiceType(DeviceType, impl=sa.String()))
+    # type = sa.Column(ChoiceType(DeviceType, impl=sa.String()))
     registration_status = sa.Column(
         sa.Enum(*[value for value, _ in RegistrationStatus.__members__.items()], name="registration_status_enum")
     )
@@ -42,8 +45,8 @@ class Device(BaseModel):
 class DeviceSchema(ModelSchema):
     id = fields.Integer(required=False)
     label = fields.String(required=False)
-    type = fields.String(required=False,
-                         validate=validate.OneOf(list(map(lambda x: x.value, DeviceType))))
+    # type = fields.String(required=False,
+    #                      validate=validate.OneOf(list(map(lambda x: x.value, DeviceType))))
     registration_status = fields.Integer(required=False)
     device_id = fields.String(required=True)
     secret = fields.String(required=True)
