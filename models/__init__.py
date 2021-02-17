@@ -9,6 +9,10 @@ from .contact import *
 # push_notification
 from .push_notification_certificate import *
 
+# Hubs
+from .detailed_hub import *
+from .simple_hub import *
+
 # user orm
 from .service_provider import *
 from .user_tag import *

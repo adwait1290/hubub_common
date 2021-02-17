@@ -1,17 +1,9 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> a083475de27af7f565995ce973d6c29dce24ff66
 from marshmallow import fields
 from marshmallow_sqlalchemy import ModelSchema
 
 from .base import BaseModel
-<<<<<<< HEAD
-=======
-=======
 from .base import BaseModel, ModelSchema, fields
->>>>>>> ed15ccc59283ddd4edaa2b4c490b126cb9c98aa6
->>>>>>> a083475de27af7f565995ce973d6c29dce24ff66
+
 
 from .db import Session
 
