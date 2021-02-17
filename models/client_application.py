@@ -1,12 +1,11 @@
 import sqlalchemy as sa
-from sqlalchemy import (
-        Index, DDL, event, FetchedValue, func, Column, false,
-        Integer, ForeignKey, String, DateTime, UniqueConstraint, Boolean
-    )
 
 import uuid
 
-from .base import BaseModel, ModelSchema, fields
+from marshmallow import fields
+from marshmallow_sqlalchemy import ModelSchema
+
+from .base import BaseModel
 from .db import Session
 
 def CreateClientID():
@@ -16,7 +15,6 @@ def CreateClientID():
 class ClientApplication(BaseModel):
     __tablename__="client_application"
     id = sa.Column(sa.Integer, primary_key=True, nullable=False)
-    account_id = sa.Column(sa.ForeignKey('account.id'))
     name = sa.Column(sa.String, nullable=False)
     application_base_url=sa.Column(sa.String, nullable=False)
     application_public_key=sa.Column(sa.String,nullable=False)
@@ -28,7 +26,6 @@ class ClientApplication(BaseModel):
 
 class ClientApplicationSchema(ModelSchema):
     id = fields.Integer(required=False)
-    account = fields.Nested('AccountSchema', many=False, required=False, missing=None)
     name = fields.String(required=False)
     application_base_url = fields.String(required=False)
     application_public_key = fields.String(required=False)
